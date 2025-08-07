@@ -17,14 +17,16 @@ body {
 }
 
 #header {
-  height: 100vh;
+  min-height: 100vh; 
+  min-height: 100svh; 
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   position: relative;
-  background-color: #f5f5f8; /* or transparent */
-  overflow: hidden;
+  background-color: #f5f5f8;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 body::-webkit-scrollbar {
@@ -773,6 +775,8 @@ nav ul li a:hover::after{
 
   .moreButton {
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
   }
 
   nav ul {
