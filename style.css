@@ -868,19 +868,24 @@ nav ul li a:hover::after{
 }
 
 .menu-toggle {
-  display: none;
-  font-size: 28px;
-  cursor: pointer;
+  display: none !important;
   z-index: 1001;
+  font-size: 28px;
   color: #1d1d1f;
+  cursor: pointer;
 }
+
 
 @media screen and (max-width: 768px) {
   .menu-toggle {
-    display: block;
+    display: block !important;
     position: fixed;
     top: 25px;
     right: 30px;
+    z-index: 1001;
+    font-size: 28px;
+    color: #1d1d1f;
+    cursor: pointer;
   }
 
   nav ul {
