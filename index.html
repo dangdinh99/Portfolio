@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dang Dinh | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+<!-- Header & Navigation -->
+<div id="header">
+  <div class="overall-menu">
+    <nav>
+      <ul id="sidemenu">
+        <li><a href="#header">Home</a></li>
+        <li><a href="#aboutMe">About</a></li>
+        <li><a href="#project">Projects</a></li>
+        <li><a href="#interest_new">Interest</a></li>
+        <li><a href="#contact_info">Contact</a></li>
+        <li><i class="fa-solid fa-xmark" onclick="closemenu()"></i></li>
+      </ul>
+      <i class="fa-solid fa-bars menu-toggle" onclick="toggleMenu()"></i>
+    </nav>
+  </div>
+
+  <div class="container hero-container">
+  <!-- 👤 Profile image on the left -->
+    <div class="hero-left">
+      <img src="image/about.png" alt="Dang Dinh profile" class="profile-pic" />
+    </div>
+
+  <!-- 📝 Header text on the right -->
+    <div class="hero-right">
+      <div class="header-text">
+        <h1>Hello, I'm <span>Dang Dinh</span></h1>
+        <div class="text-wrapper">
+          <div class="box b1">MS in Data Science @ Boston University</div>
+          <div class="box b2">Vietnamese | English</div>
+          <div class="box b3">Turning complex data into actionable insights</div>
+        </div>
+      </div>
+      <div class="moreButton">
+        <a href="#aboutMe"><button type="button">Explore more</button></a>
+        <a href="resume.pdf" download><button type="button">Download Resume</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- -----about_me---------------------------------------------------------------------------- -->
+<div id='aboutMe'>
+  <div class='container'>
+    <h1 class='sub-title'>About Me</h1>
+    <p class='self-intro'>
+      Hi, I’m Dang Dinh – a curious mind with a passion for turning data into decisions. I’m currently pursuing my Master’s in Data Science at Boston University, where I’m expanding my skills in machine learning, analytics, and real-time systems. With a dual background in Business IT and Economics from NC State, I love bridging technical insights with business impact. I thrive on hands-on learning and believe that building projects is the best way to grow. Let’s build something awesome together.
+    </p>
+    <br>
+    <div class='selection-bar'>
+      <button class='about-type active-type' onclick="opentab('skills')">
+        <p class="type-name">Skills</p>
+      </button>
+      <button class='about-type' onclick="opentab('experience')">
+        <p class="type-name">Experience</p>
+      </button>
+      <button class='about-type' onclick="opentab('education')">
+        <p class="type-name">Education</p>
+      </button>
+    </div>
+
+    <div class='about-content'>
+
+      <!-- Skills -->
+      <div class="tab-content active-tab" id="skills">
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>Programming Languages</h3>
+            <div class="skill-icons">
+              <img src="image\python.png" alt="Python">
+              <img src="image\rlogo.png" alt="R">
+              <img src="image\sql.png" alt="SQL">
+              <img src="image\html.png" alt="HTML">
+              <img src="image\css.png" alt="CSS">
+              <img src="image\js.png" alt="JavaScript">
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3>Frameworks</h3>
+            <div class="skill-icons">
+              <img src="image\pyqt6.png" alt="PyQt6">
+              <img src="image\pandas.png" alt="Pandas">
+              <img src="image\NumPy.png" alt="NumPy">
+              <img src="image\matplot.png" alt="Matplotlib">
+              <img src="image\git.png" alt="Git">
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3>Tools</h3>
+            <div class="skill-icons">
+              <img src="image\excel.png" alt="Excel">
+              <img src="image\stata.png" alt="Stata">
+              <img src="image\tableau.png" alt="Tableau">
+              <img src="image\aws.png" alt="AWS">
+              <img src="image\jira.png" alt="Jira">
+            </div>
+          </div>
+        </div>
+      </div> 
+
+      <!-- Experience -->
+      <div class="tab-content" id="experience">
+        <div class='about-box-experience'>
+          <div class='insidebox-ex'>
+            <img src="image\oitcomtech.jpg" width='200px'>
+            <div class='content-ex'>
+              <p>OIT ComTech (Raleigh, NC)</p>
+              <h3>Network Operation Center TELE Intern</h3>
+              <p>May 2024 - May 2025</p>
+            </div>
+          </div>
+          <hr class='experience-line'>
+          <div class='insidebox-ex'>
+            <img src="image\poole.jpg" width='200px'>
+            <div class='content-ex'>
+              <p>Research Assistant, NC State University</p>
+              <h3>AI Researcher</h3>
+              <p>Oct 2024 - May 2025</p>
+            </div>
+          </div>
+          <hr class='experience-line'>
+          <div class='insidebox-ex'>
+            <img src="image\wolfpackoutfitters.jpg" width='200px'>
+            <div class='content-ex'>
+              <p>Wolfpack Outfitters, NC State University</p>
+              <h3>Sale Assistant</h3>
+              <p>Aug 2023 - Dec 2023</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="tab-content" id="education">
+        <div class='about-box-education'>
+          <div class='insidebox-edu'>
+            <img src="image/bulogo.png" width='150px'>
+            <div class='content-edu'>
+              <p>Sep 2025 - Present</p>
+              <h3>Boston University</h3>
+              <p>Faculty of Computing and Data Sciences<span style="margin-left: 20px; margin-right: 20px;">|</span>Master in Data Science</p>
+            </div>
+          </div>
+          <hr class='intern-line'>
+          <div class='insidebox-edu'>
+            <img src="image/ncsulogo.png" width='150px'>
+            <div class='content-edu'>
+              <p>Aug 2023 - May 2025</p>
+              <h3>North Carolina State University</h3>
+              <p>Poole College of Management<span style="margin-left: 20px; margin-right: 20px;">|</span>Bachelor of Science in Business Administration</p>
+            </div>
+            <a href="NCSU_Transcript.pdf" target="_blank" class="transcript-link">
+              <button class="transcript-button">View Transcript</button>
+            </a>
+          </div>
+          <hr class='intern-line'>
+          <div class='insidebox-edu'>
+            <img src="image/waketech.png" width='150px'>
+            <div class='content-edu'>
+              <p>Aug 2021 - May 2023</p>
+              <h3>Wake Technical Community College</h3>
+              <p>Associate in Arts Degree<span style="margin-left: 20px; margin-right: 20px;">|</span>President's list</p>
+            </div>
+            <a href="files/Wake_Tech_Transcript.pdf" target="_blank" class="transcript-link">
+              <button class="transcript-button">View Transcript</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div> <!-- .about-content -->
+  </div> <!-- .container -->
+</div> <!-- #aboutMe -->
+
+<section id="project">
+  <div class="container project-section">
+    <h1 class="sub-title">Projects</h1>
+    <div class="project-grid">
+      
+      <!-- Project Card 1 -->
+      <div class="project-card">
+        <img src="image\dbdesign.jpg" alt="Project 1 thumbnail">
+        <div class="project-info">
+          <h3>Adult Soccer League (CASL) Database Design</h3>
+          <p>MySQL, Relational Database, Entity-Relationship Diagram (ERD), Database Normalization, Performance Analytics, Data Modeling</p>
+          <a href="project1.html" class="project-button" target="_blank">Learn More</a>
+        </div>
+      </div>
+
+      <!-- Project Card 2 -->
+      <div class="project-card">
+        <img src="image\housevalue.jpg" alt="Project 2 thumbnail">
+        <div class="project-info">
+          <h3>Economic Factor Effect on Home Value Research</h3>
+          <p>R, Stata, Data Visualization, Statistical Analysis, Multivariate Regression</p>
+          <a href="project2.html" class="project-button" target="_blank">Learn More</a>
+        </div>
+      </div>
+    
+
+      <!-- Add more cards as needed -->
+
+    </div>
+  </div>
+</section>
+
+<section id="interest_new">
+  <div class="container interest-slideshow">
+    <h1 class="sub-title">Interests</h1>
+    <p class="interest-tagline">Reflect myself</p>
+
+    <div class="slideshow-container">
+
+      <!-- Slide 1 -->
+      <div class="slide fade">
+        <img src="image\video.jpg" alt="AI">
+        <div class="slide-text">
+          <h3>Video Editing</h3>
+          <p>Storing funny moments with my friends using transitions, effects, and timelines in Premiere Pro and CapCut.</p>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide fade">
+        <img src="image\music.webp" alt="music">
+        <div class="slide-text">
+          <h3>K-pop & V-pop</h3>
+          <p>Exploring culture, music, and performance — from ballads to bangers.</p>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide fade">
+        <img src="image\pubg.jpg" alt="PUBG">
+        <div class="slide-text">
+          <h3>Video Games</h3>
+          <p>Exploring the world of battle royale games and competitive gaming.</p>
+        </div>
+      </div>
+
+      <!-- Navigation arrows -->
+      <a class="prev" onclick="changeSlide(-1)">❮</a>
+      <a class="next" onclick="changeSlide(1)">❯</a>
+
+    </div>
+
+    <!-- Dots for navigation -->
+    <div class="dot-container">
+      <span class="dot" onclick="setSlide(1)"></span>
+      <span class="dot" onclick="setSlide(2)"></span>
+      <span class="dot" onclick="setSlide(3)"></span>
+    </div>
+    <blockquote class="interest-quote">
+      “Creativity is intelligence having fun.” — Albert Einstein
+    </blockquote>
+
+  </div>
+</section>
+
+<section id="contact_info">
+  <div class="container contact-container fade-in">
+    <h1 class="sub-title">Contact Me</h1>
+    <p class="contact-tagline">Feel free to reach out — I'm open to collaboration, questions, or just saying hi.</p>
+
+    <div class="contact-grid">
+      <!-- Email -->
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <h3>Email</h3>
+        <p><a href="mailto:dangdinh030@gmail.com">dangdinh030@gmail.com</a></p>
+      </div>
+
+      <!-- Location -->
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>Location</h3>
+        <p>Boston, MA 02134, United States</p>
+      </div>
+
+      <!-- Phone -->
+      <div class="contact-item">
+        <i class="fas fa-phone-alt"></i>
+        <h3>Phone</h3>
+        <p><a href="tel:+19197462989">+1 (919) 746-2989</a></p>
+      </div>
+    </div>
+    <div class="social-icons">
+      <a href="https://linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/your-username" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://facebook.com/your-profile" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com/your-profile" target="_blank"><i class="fab fa-instagram"></i></a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>© 2025 Dang Dinh. All rights reserved.</p>
+</footer>
+
+
+
