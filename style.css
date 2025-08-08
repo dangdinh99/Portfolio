@@ -773,12 +773,14 @@ nav ul li a:hover::after{
   }
 
   .text-wrapper {
-    height: 1.4em;     /* just one line tall */
+    height: auto;         /* let it grow if wrapping */
+    overflow: visible;    /* no clipping */
+    white-space: normal;  /* allow wrapping */
+    margin-bottom: 12px;  /* space before the buttons */
   }
   .box {
-    font-size: 18px;   /* smaller text so it fits horizontally */
+    font-size: 18px;      /* smaller for mobile */
     line-height: 1.4;
-    white-space: nowrap; /* prevent wrapping */
   }
 
   .hero-right {
@@ -792,10 +794,6 @@ nav ul li a:hover::after{
 
   .header-text h1 {
     font-size: 50px;
-  }
-
-  .box {
-    font-size: 22px;
   }
 
   .moreButton {
@@ -951,8 +949,8 @@ nav ul li a:hover::after{
   /* Lock background scroll when menu is open */
   body.menu-open {
     overflow: hidden;
-    touch-action: none;
-  }
+  touch-action: none;
+}
 
 
   nav ul {
