@@ -776,7 +776,7 @@ nav ul li a:hover::after{
     height: auto;         /* let it grow if wrapping */
     overflow: visible;    /* no clipping */
     white-space: normal;  /* allow wrapping */
-    margin-bottom: 12px;  /* space before the buttons */
+    margin-bottom: 30px;  /* space before the buttons */
   }
   .box {
     font-size: 18px;      /* smaller for mobile */
