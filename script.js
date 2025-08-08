@@ -72,25 +72,33 @@ document.addEventListener("DOMContentLoaded", () => {
   showSlides(slideIndex);
 });
 
-function openmenu() {
-  document.getElementById("sidemenu").classList.add("show");
-}
+const sideMenu = document.getElementById('sidemenu');
+const menuToggle = document.querySelector('.menu-toggle');
 
-function closemenu() {
-  document.getElementById("sidemenu").classList.remove("show");
+function setMenu(open) {
+  sideMenu.classList.toggle('show', open);
+  document.body.classList.toggle('menu-open', open);
+
+  // Change icon
+  if (open) {
+    menuToggle.classList.remove('fa-bars');
+    menuToggle.classList.add('fa-xmark');
+  } else {
+    menuToggle.classList.remove('fa-xmark');
+    menuToggle.classList.add('fa-bars');
+  }
 }
 
 function toggleMenu() {
-  const menu = document.getElementById("sidemenu");
-  const icon = document.querySelector(".menu-toggle");
-
-  menu.classList.toggle("show");
-
-  if (menu.classList.contains("show")) {
-    icon.classList.remove("fa-bars");
-    icon.classList.add("fa-xmark");
-  } else {
-    icon.classList.remove("fa-xmark");
-    icon.classList.add("fa-bars");
-  }
+  setMenu(!sideMenu.classList.contains('show'));
 }
+
+// Click hamburger to toggle menu
+menuToggle.addEventListener('click', toggleMenu);
+
+// Close menu when a nav link is clicked
+sideMenu.addEventListener('click', (e) => {
+  if (e.target.matches('a')) {
+    setMenu(false);
+  }
+});

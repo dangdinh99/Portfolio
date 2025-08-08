@@ -17,8 +17,9 @@ body {
 }
 
 #header {
-  min-height: 100vh; 
-  min-height: 100svh; 
+  /* Mobile-friendly default */
+  min-height: 100svh;  /* iOS 15+ safe viewport */
+  min-height: 100vh;   /* fallback */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,7 +27,17 @@ body {
   position: relative;
   background-color: #f5f5f8;
   overflow-x: hidden;
-  overflow-y: visible;
+  overflow-y: auto; /* allow scroll if needed */
+  -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+}
+
+/* Force exact 1-screen height on desktop */
+@media (min-width: 769px) {
+  #header {
+    height: 100vh;      /* lock height */
+    min-height: unset;  /* remove mobile min-height override */
+    overflow-y: hidden; /* no vertical scroll */
+  }
 }
 
 body::-webkit-scrollbar {
@@ -722,6 +733,11 @@ nav ul li a:hover::after{
     max-width: 90%;
   }
 
+  body.menu-open {
+    overflow: hidden;
+    touch-action: none;
+  }
+
   .slide-text h3 {
     font-size: 20px;
   }
@@ -756,6 +772,15 @@ nav ul li a:hover::after{
     text-align: center;
   }
 
+  .text-wrapper {
+    height: 1.4em;     /* just one line tall */
+  }
+  .box {
+    font-size: 18px;   /* smaller text so it fits horizontally */
+    line-height: 1.4;
+    white-space: nowrap; /* prevent wrapping */
+  }
+
   .hero-right {
     align-items: center;
   }
@@ -777,6 +802,7 @@ nav ul li a:hover::after{
     justify-content: center;
     flex-wrap: wrap;
     gap: 16px;
+    margin-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
   }
 
   nav ul {
@@ -891,6 +917,43 @@ nav ul li a:hover::after{
     color: #1d1d1f;
     cursor: pointer;
   }
+
+
+    #sidemenu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 100%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    transition: right 0.3s ease;
+    z-index: 999;
+    pointer-events: none; /* avoid accidental clicks when hidden */
+  }
+
+  /* Show menu */
+  #sidemenu.show {
+    right: 0;
+    pointer-events: auto;
+  }
+
+  /* Bigger links for touch */
+  #sidemenu li a {
+    font-size: 24px;
+    font-weight: 400;
+  }
+
+  /* Lock background scroll when menu is open */
+  body.menu-open {
+    overflow: hidden;
+    touch-action: none;
+  }
+
 
   nav ul {
     position: fixed;
