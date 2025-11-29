@@ -76,43 +76,34 @@ const projectsData = {
     category: 'Data Privacy',
     image: 'image/privacy.jpg',
     description: `This is a detailed description of your project. Explain what problem it solves, the approach you took, and the impact it had. Be specific about challenges you overcame and technologies you used.`,
-    longDescription: `<div>
-<h4 style="color: #00d4ff; margin-bottom: 12px; font-size: 1.1rem;">Problem</h4>
-<p>Traditional voting systems expose exact vote counts in real-time, enabling observers to infer individual behavior through:</p>
-<ul style="margin-left: 20px; margin-bottom: 20px;">
-  <li>Timing attacks (watching counts change when someone votes)</li>
-  <li>Averaging attacks (querying repeatedly to remove noise)</li>
-  <li>Threshold crossing leaks (seeing when a count becomes visible)</li>
-</ul>
+    longDescription: `<strong><i>Problem:</i></strong><br>
+Traditional voting systems expose exact vote counts in real-time, enabling observers to infer individual behavior through:
+<br>• Timing attacks (watching counts change when someone votes)
+<br>• Averaging attacks (querying repeatedly to remove noise)
+<br>• Threshold crossing leaks (seeing when a count becomes visible)
 
-<h4 style="color: #00d4ff; margin-bottom: 12px; font-size: 1.1rem;">Solution</h4>
-<p>Built a privacy-preserving voting system using differential privacy techniques and secure multi-party computation. The system adds calibrated noise to vote counts and uses time-delayed aggregation.</p>
+<br><br><strong><i>Solution:</i></strong><br>
+Built a differential privacy sidecar that:
 
-<h4 style="color: #00d4ff; margin-bottom: 12px; font-size: 1.1rem;">Technical Architecture</h4>
-<ul style="margin-left: 20px; margin-bottom: 20px;">
-  <li>Frontend: React with encrypted vote submission</li>
-  <li>Backend: Python Flask with differential privacy library</li>
-  <li>Database: PostgreSQL with encrypted storage</li>
-  <li>Security: AES-256 encryption + noise injection algorithms</li>
-</ul>
+<br>• Adds calibrated Laplace noise (ε=0.5) to vote counts
+<br>• Releases results on fixed window timeframe (prevents timing attacks)
+<br>• Reuses noise when counts unchanged (prevents averaging attacks)
+<br>• Tracks privacy budget and lock the post when budget is exhaust.
 
-<h4 style="color: #00d4ff; margin-bottom: 12px; font-size: 1.1rem;">Results & Impact</h4>
-<ul style="margin-left: 20px; margin-bottom: 20px;">
-  <li>Achieved ε = 0.5 differential privacy guarantee</li>
-  <li>Prevented 99.8% of timing attacks in simulation</li>
-  <li>Maintained &lt;0.1% error in final vote counts</li>
-  <li>Deployed for campus elections with 5,000+ voters</li>
-</ul>
-
-<h4 style="color: #00d4ff; margin-bottom: 12px; font-size: 1.1rem;">What I Learned</h4>
-<p>This project deepened my understanding of privacy-preserving technologies and real-world security trade-offs. I learned how theoretical cryptographic concepts translate to production systems and gained experience with threat modeling.</p>
-</div>`,
+<br><br><strong><i>Technical Architecture:</i></strong>
+<br>• Frontend: Vanilla JavaScript displaying noisy counts with uncertainty ranges
+<br>• Backend: FastAPI + PostgreSQL dual-database architecture
+<br>• Privacy: ε-differential privacy with Laplace mechanism
+<br>• Budget: Lifetime epsilon tracking with automatic post locking
+<br>• Scheduler: APScheduler for batch publishing the noisy counts in a specific time`,
     tech: ['Python', 'FastAPI', 'Docker', 'SQL', 'Javascript', 'HTML/CSS'],
     features: [
       'Prevents timing attacks (fixed-schedule releases)',
       'Prevents averaging attacks (noise reuse)',
       'Budget tracking (lifetime epsilon cap)',
-      'Post locking (final results after budget exhaustion)'
+      'Post locking (final results after budget exhaustion)',
+      'Individual votes protected with plausible deniability',
+      'Balances utility with privacy'
     ],
     stats: [
       { value: '92%', label: 'Accuracy' },
@@ -125,9 +116,9 @@ const projectsData = {
     hasDemo: true
   },
   'project2': {
-    title: 'Project Title 2',
-    category: 'Data Engineering',
-    image: 'image/project-placeholder.jpg',
+    title: 'Campaign Zero: 911 Call Data',
+    category: 'Data Pipeline | Data Engineer',
+    image: 'image/campaignzero.png ',
     description: 'Another detailed project description...',
     longDescription: 'Extended description for project 2...',
     tech: ['Python', 'Snowflake', 'Airflow', 'SQL'],
