@@ -106,9 +106,9 @@ Built a differential privacy sidecar that:
       'Balances utility with privacy'
     ],
     stats: [
-      { value: '92%', label: 'Accuracy' },
-      { value: '10K', label: 'Records/min' },
-      { value: '3x', label: 'Faster' }
+      { value: '100%', label: 'Attack Prevention' },
+      { value: '96%', label: 'Decision Accuracy' },
+      { value: '98.3%', label: 'Privacy Budget Saving' }
     ],
     github: 'https://github.com/dangdinh99/fider-dp',
     demo: 'https://your-demo-link.com',
@@ -129,11 +129,11 @@ Built a differential privacy sidecar that:
       'Feature #4'
     ],
     stats: [
-      { value: '2M+', label: 'Records/day' },
-      { value: '99.9%', label: 'Uptime' },
-      { value: '5min', label: 'Latency' }
+      { value: '60M+', label: '911 Calls data' },
+      { value: '11 Cities', label: '1 Schema' },
+      { value: 'Scalable', label: 'Pipeline' }
     ],
-    github: 'https://github.com/yourusername/project2',
+    github: 'https://github.com/BU-Spark/ds-cz-911/tree/fa25-team-a-dev',
     demo: null,
     hasGithub: true,
     hasDemo: false
