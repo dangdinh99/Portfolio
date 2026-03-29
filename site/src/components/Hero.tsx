@@ -1,5 +1,25 @@
+import { useCountUp } from '../hooks/useCountUp';
+import type { HeroStat } from '../data/projectTypes';
+
 function assetUrl(path: string) {
   return path.startsWith('/') ? path : `/${path}`;
+}
+
+const heroStats: HeroStat[] = [
+  { value: 6,  suffix: '+',  label: 'Projects',          icon: 'fa-folder-open' },
+  { value: 60, suffix: 'M+', label: 'Records Processed', icon: 'fa-database' },
+  { value: 94, suffix: '%',  label: 'Best AUC',          icon: 'fa-chart-line' },
+];
+
+function StatChip({ stat }: { stat: HeroStat }) {
+  const { ref, count } = useCountUp(stat.value, 1200);
+  return (
+    <div className="stat-chip" ref={ref as React.RefObject<HTMLDivElement>}>
+      <i className={`fas ${stat.icon} stat-chip-icon`} />
+      <span className="stat-chip-value">{count}{stat.suffix}</span>
+      <span className="stat-chip-label">{stat.label}</span>
+    </div>
+  );
 }
 
 export function Hero() {
@@ -29,6 +49,11 @@ export function Hero() {
           <div className="hero-right">
             <div className="profile-image-wrapper">
               <img src={assetUrl('image/about1.png')} alt="Dang Dinh" className="profile-pic" />
+            </div>
+            <div className="hero-stat-chips">
+              {heroStats.map((stat) => (
+                <StatChip key={stat.label} stat={stat} />
+              ))}
             </div>
           </div>
         </div>

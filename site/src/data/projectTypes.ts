@@ -33,3 +33,38 @@ export interface Contest {
   link?: string;
   longDescription?: string;
 }
+
+export interface Certification {
+  iconClass: string;
+  title: string;
+  provider: string;
+  date: string;
+  badge: string;
+}
+
+export interface ExperienceItem {
+  date: string;
+  title: string;
+  company: string;
+  icon: string;
+  isSchool: boolean;
+  description: string;
+}
+
+export interface Skill {
+  name: string;
+  level: number;
+}
+
+export interface SkillGroup {
+  icon: string;
+  title: string;
+  skills: Skill[];
+}
+
+export interface HeroStat {
+  value: number;
+  suffix: string;
+  label: string;
+  icon: string;
+}
