@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useNavbarScrolled, useActiveSection } from '../hooks/useActiveSection';
 
-const NAV_IDS = ['hero', 'about', 'projects', 'contests', 'experience', 'certifications', 'contact'];
+const NAV_IDS = ['hero', 'about', 'projects', 'experience', 'contact'];
 
 const links: { href: string; label: string }[] = [
   { href: '#hero', label: 'Home' },
   { href: '#about', label: 'About' },
   { href: '#projects', label: 'Projects' },
-  { href: '#contests', label: 'Contests' },
   { href: '#experience', label: 'Experience' },
-  { href: '#certifications', label: 'Certifications' },
   { href: '#contact', label: 'Contact' },
 ];
 

@@ -1,17 +1,56 @@
 import { SectionReveal } from './SectionReveal';
+import { skillGroups, expertiseTags } from '../data/skills';
+import { certifications } from '../data/certifications';
+import { useCountUp } from '../hooks/useCountUp';
+import type { Skill, SkillGroup } from '../data/projectTypes';
 
-const programming = ['Python', 'R', 'SQL', 'JavaScript', 'HTML/CSS'];
-const ml = ['Scikit-learn', 'XGBoost', 'PyTorch', 'Pandas', 'NumPy', 'Matplotlib'];
-const tools = ['AWS', 'Snowflake', 'Git', 'Docker', 'Tableau', 'Jupyter', 'VS Code', 'MySQL', 'PostgreSQL', 'Stata', 'Excel'];
-const expertise = [
-  'Machine Learning ',
-  'Deep learning model',
-  'Exploratory data analysis',
-  'Data engineering',
-  'Data cleaning',
-  'NLP',
-  'Big Data',
+const aboutStats = [
+  { end: 6,  suffix: '+',   label: 'Projects Completed' },
+  { end: 35, suffix: '',    label: 'Years Learning', format: (n: number) => `${(n / 10).toFixed(1)}+` },
+  { end: 3,  suffix: '',    label: 'Certifications' },
+  { end: 10, suffix: '+',   label: 'Technologies' },
 ];
+
+function StatItem({ end, suffix, label, format }: typeof aboutStats[number]) {
+  const { ref, count } = useCountUp(end, 1500);
+  const display = format ? format(count) : `${count}${suffix}`;
+  return (
+    <SectionReveal className="stat-item">
+      <div ref={ref as React.RefObject<HTMLDivElement>} className="stat-number">{display}</div>
+      <div className="stat-label">{label}</div>
+    </SectionReveal>
+  );
+}
+
+function SkillBar({ skill }: { skill: Skill }) {
+  const { ref, count } = useCountUp(skill.level, 900);
+  return (
+    <div className="skill-bar-row" ref={ref as React.RefObject<HTMLDivElement>}>
+      <div className="skill-bar-header">
+        <span className="skill-bar-name">{skill.name}</span>
+        <span className="skill-bar-pct">{count}%</span>
+      </div>
+      <div className="skill-bar-track">
+        <div className="skill-bar-fill" style={{ width: `${count}%` }} />
+      </div>
+    </div>
+  );
+}
+
+function SkillBarGroup({ group }: { group: SkillGroup }) {
+  return (
+    <SectionReveal className="skill-category">
+      <h3>
+        <i className={`fas ${group.icon}`} /> {group.title}
+      </h3>
+      <div className="skill-bars">
+        {group.skills.map((skill) => (
+          <SkillBar key={skill.name} skill={skill} />
+        ))}
+      </div>
+    </SectionReveal>
+  );
+}
 
 export function About() {
   return (
@@ -41,50 +80,49 @@ export function About() {
             </p>
 
             <div className="stats-grid">
-              <SectionReveal className="stat-item">
-                <div className="stat-number">6+</div>
-                <div className="stat-label">Projects Completed</div>
-              </SectionReveal>
-              <SectionReveal className="stat-item">
-                <div className="stat-number">3.5+</div>
-                <div className="stat-label">Years Learning</div>
-              </SectionReveal>
-              <SectionReveal className="stat-item">
-                <div className="stat-number">2</div>
-                <div className="stat-label">Certifications</div>
-              </SectionReveal>
-              <SectionReveal className="stat-item">
-                <div className="stat-number">10+</div>
-                <div className="stat-label">Technologies</div>
-              </SectionReveal>
+              {aboutStats.map((s) => (
+                <StatItem key={s.label} {...s} />
+              ))}
             </div>
           </div>
 
           <div className="skills-section">
-            <SkillCategory icon="fa-code" title="Programming Languages" tags={programming} />
-            <SkillCategory icon="fa-brain" title="ML & Data Science" tags={ml} />
-            <SkillCategory icon="fa-tools" title="Tools & Platforms" tags={tools} />
-            <SkillCategory icon="fa-graduation-cap" title="Expertise" tags={expertise} />
+            {skillGroups.map((group) => (
+              <SkillBarGroup key={group.title} group={group} />
+            ))}
+            <SectionReveal className="skill-category">
+              <h3>
+                <i className="fas fa-graduation-cap" /> Expertise
+              </h3>
+              <div className="skill-tags">
+                {expertiseTags.map((t) => (
+                  <span key={t} className="skill-tag">{t}</span>
+                ))}
+              </div>
+            </SectionReveal>
+          </div>
+        </div>
+
+        {/* Certifications sub-section */}
+        <div className="certs-subsection">
+          <h3 className="certs-subsection-title">
+            <i className="fas fa-certificate" /> Certifications
+          </h3>
+          <div className="cert-grid">
+            {certifications.map((c) => (
+              <SectionReveal key={c.title} className="cert-card">
+                <div className="cert-icon">
+                  <i className={c.iconClass} />
+                </div>
+                <h3>{c.title}</h3>
+                <p className="cert-provider">{c.provider}</p>
+                <span className="cert-date">{c.date}</span>
+                <span className="cert-badge">{c.badge}</span>
+              </SectionReveal>
+            ))}
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function SkillCategory({ icon, title, tags }: { icon: string; title: string; tags: string[] }) {
-  return (
-    <SectionReveal className="skill-category">
-      <h3>
-        <i className={`fas ${icon}`} /> {title}
-      </h3>
-      <div className="skill-tags">
-        {tags.map((t) => (
-          <span key={t} className="skill-tag">
-            {t}
-          </span>
-        ))}
-      </div>
-    </SectionReveal>
   );
 }
